@@ -2,9 +2,12 @@
   "name": "redis-ui",
   "version": "1.0.0",
   "description": "",
-  "main": "build/main.js",
+  "main": "build/lib/main.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "babel src -d build/lib && cp src/ui/index.html build/lib/ui/",
+    "start": "npm run build && npm run electron",
+    "electron": "electron ."
   },
   "author": "",
   "license": "ISC",
