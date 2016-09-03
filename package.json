@@ -5,20 +5,28 @@
   "main": "build/lib/main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "babel src -d build/lib && cp src/ui/index.html build/lib/ui/",
-    "start": "npm run build && npm run electron",
-    "electron": "electron ."
+    "start": "npm run build && npm run build-scss && npm run electron",
+    "electron": "electron .",
+    "build": "npm run build-folders && npm run build-js && npm run build-pages && npm run build-scss",
+    "build-folders": "mkdir -p build/lib/pages && mkdir -p build/lib/styles",
+    "build-js": "babel src -d build/lib",
+    "build-pages": "cp src/pages/index.html build/lib/pages",
+    "build-scss": "node-sass src/styles/main.scss --include-path node_modules/foundation-sites/scss > build/lib/styles/main.css"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "electron": "^1.3.5"
+    "electron": "^1.3.5",
+    "node-sass": "^3.8.0",
+    "scss": "^0.2.4"
   },
   "dependencies": {
     "babel-cli": "^6.14.0",
     "babel-preset-es2015": "^6.14.0",
     "babel-preset-react": "^6.11.1",
     "babel-preset-stage-0": "^6.5.0",
+    "foundation-sites": "^6.2.3",
+    "jquery": "^2.2.4",
     "react": "^15.3.1",
     "react-dom": "^15.3.1",
     "react-redux": "^4.4.5",

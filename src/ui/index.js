@@ -1,10 +1,12 @@
 'use strict';
 
+import "./vendors";
+import "./scripts/load-css";
+
 import React from 'react';
 import { render } from 'react-dom';
 
-const b = document.createElement('div');
-document.body.appendChild(b);
+
 
 function Main () {
   return (
@@ -12,4 +14,4 @@ function Main () {
   )
 }
 
-render(<Main />, b);
+render(<Main />, document.getElementById('main'));
